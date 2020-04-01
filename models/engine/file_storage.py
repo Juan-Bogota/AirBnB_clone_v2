@@ -27,7 +27,7 @@ class FileStorage:
         """
         list = {}
         if cls:
-            for k, v in FileStorage.__objects.items():
+            for k, v in self.__objects.items():
                 if cls.__name__ == v.__class__.__name__:
                     list[k] = v
             return list
@@ -66,7 +66,6 @@ class FileStorage:
         """
         Method delete obj from __objects if it’s inside
         """
-        find_class = obj.__class__.__name__ + '.' + obj.id
-        if find_class in FileStorage.__objects:
-            del FileStorage.__objects[find_class]
+        if obj:
+            del self.__objects[obj.__class__.__name__ + '.' + obj.id]
             self.save()
