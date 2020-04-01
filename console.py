@@ -41,10 +41,29 @@ class HBNBCommand(cmd.Cmd):
         try:
             if not line:
                 raise SyntaxError()
-            my_list = line.split(" ")
-            obj = eval("{}()".format(my_list[0]))
+            coun_eq = line.count('=')
+            my_list = line.split(' ', coun_eq)
+            obj = eval(my_list[0])()
+            i = 1
+            while i < len(my_list):
+                parameter = my_list[i]
+                validate_parameter = parameter.split("=")
+                key_p = validate_parameter[0]
+                value_p = validate_parameter[1]
+                i += 1
+                if "_" in value_p:
+                    replace_p = value_p.replace("_", " ")
+                    value_p = replace_p
+                if '"' in value_p:
+                    replace_p = value_p.replace('"', '')
+                    value_p = replace_p
+                elif "." in value_p:
+                    value_p = float(value_p)
+                else:
+                    value_p = int(value_p)
+                setattr(obj, key_p, value_p)
+            print(obj.id)
             obj.save()
-            print("{}".format(obj.id))
         except SyntaxError:
             print("** class name missing **")
         except NameError:
