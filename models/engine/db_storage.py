@@ -36,7 +36,6 @@ class DBStorage:
         query on the current database session (self.__session) all objects
         depending of the class name (argument cls)
         """
-        print("CLASS {}".format(cls))
         my_dict = {}
         classes = [State, City]
         if cls:
@@ -45,7 +44,6 @@ class DBStorage:
             for j in self.__session.query(i).all():
                 key = "{}.{}".format(type(j).__name__, j.id)
                 my_dict[key] = j
-
         return my_dict
 
     def new(self, obj):
