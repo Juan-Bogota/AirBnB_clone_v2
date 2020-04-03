@@ -37,7 +37,7 @@ class DBStorage:
         depending of the class name (argument cls)
         """
         my_dict = {}
-        classes = [State, City, User, Place, Review]
+        classes = [State, City, User, Place, Review, Amenity]
         if cls:
             classes = [cls]
         for i in classes:
