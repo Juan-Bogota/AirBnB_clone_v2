@@ -37,9 +37,9 @@ class DBStorage:
         depending of the class name (argument cls)
         """
         my_dict = {}
-        classes = [State, City]
+        classes = [State, City, User, Place]
         if cls:
-            classes = [cls.__name__]
+            classes = [cls]
         for i in classes:
             for j in self.__session.query(i).all():
                 key = "{}.{}".format(type(j).__name__, j.id)
