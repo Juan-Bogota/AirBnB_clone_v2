@@ -11,6 +11,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class DBStorage:
     """
     DBStorage
@@ -37,7 +38,7 @@ class DBStorage:
         depending of the class name (argument cls)
         """
         my_dict = {}
-        classes = [State, City, User, Place]
+        classes = [State, City, User, Place, Review, Amenity]
         if cls:
             classes = [cls]
         for i in classes:
@@ -65,7 +66,6 @@ class DBStorage:
         if obj:
             self.__session.delete(obj)
             self.save()
-
 
     def reload(self):
         """
