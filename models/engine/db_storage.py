@@ -39,6 +39,7 @@ class DBStorage:
         """
         my_dict = {}
         classes = [State, City, User, Place, Review, Amenity]
+
         if cls:
             classes = [cls]
         for i in classes:

@@ -62,6 +62,9 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     value_p = int(value_p)
                 setattr(obj, key_p, value_p)
+
+            my_dict = obj.to_dict()
+            obj = eval(my_dict['__class__'])(**my_dict)
             print(obj.id)
             obj.save()
         except SyntaxError:
