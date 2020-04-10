@@ -15,3 +15,4 @@ sudo chown -R ubuntu:ubuntu /data
 new="server_name _;\n\tlocation \/hbnb_static\/ {\n\t\talias \/data\/web_static\/current\/;\n\t}\n"
 sudo sed -i "s/server_name _;/$new/" /etc/nginx/sites-available/default
 sudo service nginx restart
+exit 0
